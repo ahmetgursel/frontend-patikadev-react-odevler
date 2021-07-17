@@ -1,0 +1,10 @@
+.header {
+  display: block;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  text-align: center;
+  font-size: 100px;
+  font-weight: 100;
+  color: rgba(175, 47, 47, 0.15);
+  text-rendering: optimizeLegibility;
+}
