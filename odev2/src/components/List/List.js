@@ -1,15 +1,48 @@
 import React from 'react';
 
-function List() {
+function List(props) {
+  // todos list render
+  let todosListRender = props.todos.map((item, index) => {
+    if (item.text !== '') {
+      return (
+        props.filterCheckHandler(item) && (
+          <li className={item.status ? 'completed' : ''} key={index}>
+            <div className='view'>
+              <input
+                className='toggle'
+                name=''
+                type='checkbox'
+                checked={item.status}
+                onChange={() => props.listCheckboxToggleHandler(index)}
+              />
+              <label>{item.text}</label>
+              <button
+                className='destroy'
+                onClick={() => props.listDestroyButtonClickHandler(index)}
+              >
+                {' '}
+              </button>
+            </div>
+          </li>
+        )
+      );
+    }
+    return false;
+  });
+
   return (
-    <div>
-      <ul>
-        <li>Lorem ipsum dolor sit amet.</li>
-        <li>Ipsum quia perspiciatis quidem nihil?</li>
-        <li>Sint dolore in amet assumenda!</li>
-        <li>Laudantium expedita illum iste dolores!</li>
-        <li>Voluptatem quis eligendi fuga quisquam!</li>
-      </ul>
+    <div className='main'>
+      <input
+        property='toggleAll'
+        id='toggle-all'
+        className='toggle-all'
+        type='checkbox'
+        onClick={props.listCheckboxAllToggle}
+      />
+
+      <label htmlFor='toggle-all'>Mark all as complete</label>
+
+      <ul className='todo-list'>{todosListRender}</ul>
     </div>
   );
 }

@@ -1,10 +1,9 @@
 import React from 'react';
-import classes from './Header.module.css';
 
 function Header() {
   return (
-    <div>
-      <h1 className={classes.header}>todos</h1>
+    <div className='header todoapp'>
+      <h1>todos</h1>
     </div>
   );
 }
